@@ -6,25 +6,15 @@ services:
       context: ./.docker/fpm
     depends_on:
       - db
+    env_file: ./.docker/env.yml
     restart: unless-stopped
     container_name: ${PROJECT_NAME:-app}_fpm
-    environment:
-      APP_ENV: ${APP_ENV:-dev}
-      APP_SECRET: ${APP_SECRET:-e5f54688edefaeb69243e047b2a76955}
-      DATABASE_URL: ${DATABASE_DSN:-postgres://postgres:password@db:5432/postgres}
-      APP_TIMEZONE: ${APP_TIMEZONE:-America/Montevideo}
-      APP_SERVER_NAME: ${APP_SERVER_NAME:-localhost.docker}
     volumes:
       - ./api:/var/www
   nginx:
     build:
       context: ./.docker/nginx
-    environment:
-      APP_ENV: ${APP_ENV:-dev}
-      APP_SECRET: ${APP_SECRET:-e5f54688edefaeb69243e047b2a76955}
-      DATABASE_URL: ${DATABASE_DSN:-postgres://postgres:password@db:5432/postgres}
-      APP_TIMEZONE: ${APP_TIMEZONE:-America/Montevideo}
-      APP_SERVER_NAME: ${APP_SERVER_NAME:-localhost.docker}
+    env_file: ./.docker/env.yml
     volumes:
       - ./var/logs/nginx:/var/log/nginx
     depends_on:
