@@ -30,9 +30,6 @@ But it can be used as an starting point.
 - var/postgres/ *Postgress persistent data*
 
 ## ToDo
-- Xdebug env vars
-- Opcache env vars
-- Cleanup / organize ini/entrypoints
 - Production build scripts
 - Document Env vars
 - Review user permissions of persistent data / logs / composer's vendor and any file created from our container

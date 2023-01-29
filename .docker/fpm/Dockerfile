@@ -6,7 +6,7 @@ RUN apk --update --no-cache add git curl bash icu-dev postgresql-dev linux-heade
 # PHP stuff
 RUN docker-php-ext-install intl pdo_pgsql opcache
 RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
-COPY ./php.ini /usr/local/etc/php/conf.d/docker-php-config.ini
+COPY ./conf.d/*.ini /usr/local/etc/php/conf.d/
 
 # Xdebug
 RUN pecl install xdebug
