@@ -7,10 +7,10 @@ But it can be used as an starting point.
 
 ## Install
 - Clone the repository
+- Requires [my traefik setup](https://github.com/danielm/traefik-reverse-proxy/)
 - Create *.env* file from .env.default example
-- Add 'my_project.docker' to /etc/hosts files
 - docker-compose build && docker-compose up
-- Service available at: http://my_project.docker:80/
+- Service available at: http://api.localhost/
 
 ## Now you got:
 

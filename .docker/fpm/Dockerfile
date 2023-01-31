@@ -18,13 +18,8 @@ COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 # Symfony
 RUN curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
 
-#RUN mkdir /.symfony && chown 1000:1000 /.symfony
-#RUN echo 'alias sf="php app/console"' >> ~/.bashrc
-
-# RUN ln -s /usr/share/zoneinfo/America/Montevideo /etc/localtime
-
 WORKDIR /var/www
 
-#CMD composer install ;  php-fpm 
+#RUN composer install --no-scripts --no-autoloader
 
 EXPOSE 9000
