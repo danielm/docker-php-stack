@@ -24,10 +24,9 @@ services:
     restart: unless-stopped
     container_name: ${PROJECT_NAME:-app}_nginx
     labels:
-      traefik.port: 80
-      traefik.frontend.rule: Host:${APP_SERVER_NAME:-api.localhost}
-      traefik.docker.network: proxy
-      traefik.enable: true
+      - "traefik.enable=true"
+      - "traefik.http.routers.${PROJECT_NAME:-app}.entrypoints=http"
+      - "traefik.http.routers.${PROJECT_NAME:-app}.rule=Host(`${APP_SERVER_NAME:-app.localhost}`)"
     networks:
       - internal
       - proxy
@@ -47,7 +46,7 @@ services:
 
 networks:
   proxy:
-    name: proxy
+    name: traefik-proxy
     external: true
   internal:
     name: internal
